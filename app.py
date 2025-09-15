@@ -24,8 +24,8 @@ st.title("OpenAI Q&A")
 user_question = st.text_area("Enter your question")
 date_guard = st.text_input("Which date is today (yyyy-mm-dd)?", placeholder="Type today's date to enable Run button")
 
-# --- Run button only active if 'idk' entered ---
-can_run = date_guard.strip().lower() == "idk"
+# --- Run button only active if entered ---
+can_run = date_guard.strip().lower() == st.secrets["today_date"].strip().lower()
 st.write(f"Run button {'enabled' if can_run else 'disabled until you type today date'}")
 
 if st.button("Run", disabled=not can_run):
